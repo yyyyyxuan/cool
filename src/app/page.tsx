@@ -1,11 +1,17 @@
+import { signIn, signOut } from 'next-auth/react';
 
-export default function Home() {
+const LoginPage = () => {
   return (
-    <div>
+    <>
       <div>
-        <h1>Hi</h1>
+        <button onClick={() => signIn('google')}>Sign in with Google</button>
       </div>
-    </div>
-  )
-}
+      <div>
+        <button onClick={() => signOut()}>Sign out</button>
+      </div>
+    </>
 
+  );
+};
+
+export default LoginPage;
