@@ -3,7 +3,7 @@ import React from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 const SigninButton = () => {
   const { data: session } = useSession();
-
+  console.log("hmmm");
   if (session && session.user) {
     return (
       <div className="flex gap-4 ml-auto">
@@ -18,6 +18,7 @@ const SigninButton = () => {
     <button onClick={() => signIn()} className="text-green-600 ml-auto">
       Sign In
     </button>
+    
   );
 };
 
