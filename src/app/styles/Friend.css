@@ -1,0 +1,12 @@
+.friendSearch{
+    height: 100px;
+    padding:5px
+}
+.friendRequests{
+    height: 150px;
+    padding: 5px;
+}
+.friendList{
+    padding: 5px;
+    height: 500px;
+}

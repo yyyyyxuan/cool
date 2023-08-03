@@ -1,0 +1,15 @@
+
+body {
+    margin: 0;
+  }
+  
+  .NavBar {
+    width: 100vw;
+    height: 80px;
+    overflow: hidden;
+    background-color: #f0f0f0; /* Light grey background */
+    display: flex;
+    justify-content: space-between; /* This will push the h1 to the left and the SigninButton to the right */
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }

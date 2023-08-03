@@ -1,4 +1,4 @@
-import Appbar from "./components/Appbar";
+import NavBar from "./components/NavBar";
 import Providers from "./components/Providers";
 
 import { Inter } from "next/font/google";
@@ -13,10 +13,11 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      
       <body className={inter.className}>
+        
         <Providers>
-          <Appbar />
-
+          <NavBar />
           {children}
         </Providers>
       </body>
