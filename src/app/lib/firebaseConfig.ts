@@ -17,7 +17,6 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const key = process.env.REACT_APP_API_KEY;  
 export async function getUserByEmail(email:any) {
-    console.log(key)
     const usersCollection = collection(db, "users");
     const q = query(usersCollection, where("email", "==", email));
     const querySnapshot = await getDocs(q);
@@ -266,5 +265,36 @@ export async function getFriendImages(emails:any){
     }else{
       return [];
     }
+  }
+}
+export async function setGroup(emailArray:Array<String>,groupName:string,currentUserEmail:string){
+  if(emailArray&&groupName&&currentUserEmail){
+    const groupRef = collection(db,"groups");
+    const groupCRef = collection(db,"conversations");
+
+    emailArray.push(currentUserEmail)
+
+    await addDoc(groupCRef,{participants:emailArray});
+    await addDoc(groupRef,{groupname:groupName,members:emailArray});
+  }
+}
+export async function returnGroupName(currentUserEmail:string){
+  const ref = collection(db,'groups')
+  try{
+    const q = query(ref, where("members", "array-contains", currentUserEmail));
+    const qsnap = await getDocs(q)
+    
+    // Initialize an array to store the groupnames
+    const groupNames: string[] = [];
+  
+    // Iterate over the querySnapshot and collect the groupnames
+    qsnap.forEach((doc) => {
+      const groupName = doc.data().groupname;
+      groupNames.push(groupName);
+    });
+    return groupNames;
+  }catch(e){
+    console.log(e)
+    return [];
   }
 }
